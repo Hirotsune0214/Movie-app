@@ -1,0 +1,17 @@
+body {
+  background-image: url("./assets/images/image.jpg");
+}
+
+.container {
+  background-color: #003333;
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5em;
+}
