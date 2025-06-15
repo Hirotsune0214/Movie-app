@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import MovieBox from "./components/MovieBox";
+import { API_URL } from "./constants";
+import "bootstrap/dist/css/bootstrap.min.css";
+import MovieBox from "./components/MovieBox/MovieBox";
 
 function App() {
-  const API_URL =
-    "https://api.themoviedb.org/3/movie/popular?api_key=bb46848237eacc0a36827f6639b47ee3";
-
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
@@ -28,10 +27,12 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {movieData.map((movie) => {
-        return <MovieBox key={movie.id} {...movie} />;
-      })}
+    <div className="container">
+      <div className="grid">
+        {movieData.map((movie) => {
+          return <MovieBox key={movie.id} {...movie} />;
+        })}
+      </div>
     </div>
   );
 }
