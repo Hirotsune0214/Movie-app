@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { API_URL } from "./constants";
+import { API_URL, API_SEARCH } from "./constants";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import MovieBox from "./components/MovieBox/MovieBox";
+import Header from "./components/Header/Header";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -12,7 +14,7 @@ function App() {
       try {
         const res = await fetch(API_URL);
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
 
         setMovieData(data.results);
 
@@ -26,14 +28,28 @@ function App() {
     fetchData();
   }, []);
 
+  const handleSearch = async (query) => {
+    // console.log(query);
+    try {
+      const res = await fetch(`${API_SEARCH}${query}`);
+      const data = await res.json();
+      setMovieData(data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className="container">
-      <div className="grid">
-        {movieData.map((movie) => {
-          return <MovieBox key={movie.id} {...movie} />;
-        })}
+    <>
+      <Header onSearch={handleSearch} />
+      <div className="container">
+        <div className="grid">
+          {movieData.map((movie) => {
+            return <MovieBox key={movie.id} {...movie} />;
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 export default App;
