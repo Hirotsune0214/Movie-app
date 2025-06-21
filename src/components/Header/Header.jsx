@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import "./Header.css";
 
-const Header = ({ onSearch }) => {
+const Header = ({ onSearch, onClickUpcoming }) => {
   const [searchText, setSearchText] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,8 +16,8 @@ const Header = ({ onSearch }) => {
           <Navbar.Brand href="/" className="text-white ">
             🎬MovieDb App
           </Navbar.Brand>
-          <Nav.Link href="/" className="text-white">
-            Trending
+          <Nav.Link href="#" className="text-white" onClick={onClickUpcoming}>
+            Upcoming
           </Nav.Link>
           <Form className="d-flex ms-auto" onSubmit={handleSubmit}>
             <Form.Control

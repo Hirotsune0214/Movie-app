@@ -14,4 +14,15 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0.5em;
+  padding: 10px 0;
+}
+
+.noMovie {
+  font-size: 50px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  grid-column: 1/ -1;
 }
