@@ -55,8 +55,8 @@ const MovieBox = ({
           <ModalBody>
             <h5>{`IMDb: ${Math.floor(vote_average)}`}</h5>
             <h5>{`Release Date: ${release_date}`}</h5>
-            <h4>Overview</h4>
-            <p>{overview}</p>
+            <h5>Overview</h5>
+            <p className="overview">{overview}</p>
           </ModalBody>
           <ModalFooter>
             <Button variant="primary" onClick={handleShowClose}>
