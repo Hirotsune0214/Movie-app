@@ -2,3 +2,16 @@
   width: 170px;
   margin-right: 10px;
 }
+
+.categoryChoice {
+  color: white;
+  transition: 0.3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.categoryChoice:hover {
+  color: #ffd700;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}

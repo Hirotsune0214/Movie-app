@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { API_URL, API_SEARCH, API_UPCOMING } from "./constants";
+import {
+  API_POPULAR,
+  API_SEARCH,
+  API_UPCOMING,
+  API_NOWPLAYING,
+} from "./constants";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import MovieBox from "./components/MovieBox/MovieBox";
@@ -12,9 +17,9 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(API_URL);
+        const res = await fetch(API_NOWPLAYING);
         const data = await res.json();
-        // console.log(data);
+        console.log(data);
         setMovieData(data.results);
 
         return data;
@@ -49,9 +54,24 @@ function App() {
     }
   };
 
+  const FetchPopular = async () => {
+    try {
+      const res = await fetch(`${API_POPULAR}`);
+      const data = await res.json();
+      // console.log("test");
+      setMovieData(data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-      <Header onSearch={handleSearch} onClickUpcoming={FetchUpcoming} />
+      <Header
+        onSearch={handleSearch}
+        onClickUpcoming={FetchUpcoming}
+        onClickPopular={FetchPopular}
+      />
       <div className="container">
         <div className="grid">
           {movieData.length === 0 ? (

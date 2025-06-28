@@ -2,6 +2,42 @@
   overflow: hidden;
   /* text-overflow: ellipsis; */
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 20;
   -webkit-box-orient: vertical;
+}
+
+/* .overview span {
+  cursor: pointer;
+  color: rgb(3, 94, 155);
+}
+
+.overview span:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+ */
+
+.overview span {
+  position: relative;
+  text-decoration: none;
+  color: rgb(3, 94, 155);
+  transition: 0.3s;
+}
+.overview span:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.overview span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 3px;
+  background: rgb(3, 94, 155);
+  transition: 0.3s;
+}
+.overview span:hover::before {
+  width: 100%;
 }

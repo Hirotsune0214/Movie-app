@@ -20,12 +20,21 @@ const MovieBox = ({
   overview,
 }) => {
   const [show, setShow] = useState(false);
+  const [isReadMore, setIsReadMore] = useState(false);
 
   const handleShowOpen = () => {
     setShow(true);
   };
   const handleShowClose = () => {
     setShow(false);
+  };
+
+  const handleReadOpen = () => {
+    setIsReadMore(true);
+  };
+
+  const handleReadClose = () => {
+    setIsReadMore(false);
   };
 
   return (
@@ -45,6 +54,7 @@ const MovieBox = ({
         <Modal show={show}>
           <ModalHeader closeButton onClick={handleShowClose}></ModalHeader>
           <img
+            className="mx-auto d-block"
             src={API_IMG + poster_path}
             alt={title}
             style={{ width: "250px" }}
@@ -56,7 +66,20 @@ const MovieBox = ({
             <h5>{`IMDb: ${Math.floor(vote_average)}`}</h5>
             <h5>{`Release Date: ${release_date}`}</h5>
             <h5>Overview</h5>
-            <p className="overview">{overview}</p>
+            {isReadMore ? (
+              <>
+                <p className="overview">
+                  {overview} <span onClick={handleReadClose}>Read More</span>
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="overview">
+                  {overview.slice(0, 150)}...
+                  <span onClick={handleReadOpen}>Read More</span>
+                </p>
+              </>
+            )}
           </ModalBody>
           <ModalFooter>
             <Button variant="primary" onClick={handleShowClose}>
