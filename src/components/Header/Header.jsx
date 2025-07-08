@@ -1,12 +1,15 @@
-import React, { useState } from "react";
 import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import "./Header.css";
 
-const Header = ({ onSearch, onClickUpcoming, onClickPopular }) => {
-  const [searchText, setSearchText] = useState("");
+const Header = ({
+  onSearch,
+  onClickUpcoming,
+  onClickPopular,
+  searchText,
+  setSearchText,
+}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(searchText);
     onSearch(searchText);
   };
   return (
@@ -19,7 +22,9 @@ const Header = ({ onSearch, onClickUpcoming, onClickPopular }) => {
           <Nav.Link
             href="#"
             className="me-3 categoryChoice"
-            onClick={onClickUpcoming}
+            onClick={() => {
+              onClickUpcoming();
+            }}
           >
             Upcoming
           </Nav.Link>
@@ -35,6 +40,7 @@ const Header = ({ onSearch, onClickUpcoming, onClickPopular }) => {
               type="text"
               placeholder="Search"
               className="custom-width"
+              value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             />
             <Button type="submit">Search</Button>

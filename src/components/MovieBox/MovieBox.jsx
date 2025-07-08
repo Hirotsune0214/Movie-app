@@ -43,7 +43,7 @@ const MovieBox = ({
         <Card className="movie-card bg-transparent border-0 ">
           <CardImg
             className="mt-3"
-            style={{ width: "300px" }}
+            style={{ width: "300px", height: "450px" }}
             src={API_IMG + poster_path}
             alt={title}
           />
@@ -51,6 +51,7 @@ const MovieBox = ({
             View More
           </Button>
         </Card>
+
         <Modal show={show}>
           <ModalHeader closeButton onClick={handleShowClose}></ModalHeader>
           <img
